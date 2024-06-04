@@ -1,0 +1,84 @@
+:root {
+	--blue: #85c1e9;
+}
+
+.radioContainer {
+	width: 40%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	z-index: 10;
+}
+.radio {
+	width: 100%;
+	pointer-events: none;
+}
+.redThing {
+	background-color: red;
+	width: 3px;
+	height: 4.5%;
+	position: fixed;
+	top: 58.5%;
+	left: 30%;
+	pointer-events: none;
+}
+
+.controls {
+	position: fixed;
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ferryLights {
+	position: fixed;
+	top: -20px;
+	width: 100%;
+	z-index: -2;
+	pointer-events: none;
+}
+
+.janras {}
+
+.titlesContainer{
+	width: fit-content;
+	height: 100%;
+	z-index: -2;
+}
+.playlist-container {
+	position: sticky;
+	top: 0px;
+	padding-top: 100px;
+	background-color: var(--blue);
+	z-index: 1;
+}
+.playlist {
+	padding: 20px;
+	color: white;
+	text-shadow: black 1px 0 10px;
+}
+.janras:hover {
+	color: red;
+}
+
+.top-text {
+	z-index: 10;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	padding: 20px;
+	display: flex;
+	gap: 50px;
+	color: white;
+	text-shadow: black 1px 0 10px;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+body {
+	background-color:  var(--blue);
+}
