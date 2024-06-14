@@ -38,7 +38,12 @@ async function loadingWrapper(func) {
     const elm = document.getElementById("loading");
 
     elm.style.display = "flex";
-    await func();
+    try {
+        await func();
+    } catch {
+        window.alert('I faild you');
+        loadingWrapper(func);
+    }
     elm.style.display = "none";
 }
 
@@ -85,13 +90,14 @@ function saveStation() {
 
     if (res && res[0]?.url) {
         const stations = getStorage(key_stations);
-        if(stations.includes(res[0]?.url)) window.alert('already exists you beautifull pies of wizard pumpkin numnum')
-        else if (!Array.isArray(stations)) { 
+        if (stations.filter(e => e.name === spanContent).length > 0) window.alert('already exists you beautifull pies of wizard pumpkin numnum')
+        else if (!Array.isArray(stations)) {
             setStorage(key_stations, []);
             window.alert("dud I dont know ... didnt work this time ... i like pie haha 2352353263262")
         }
         else {
-            stations.push(res[0]?.url);
+            stations.push({ url: res[0]?.url, metaData: { title: spanContent } });
+            console.log(stations)
             setStorage(key_stations, stations);
         }
     } else {
@@ -100,10 +106,23 @@ function saveStation() {
 }
 function loadStations() {
     const tmp = getStorage(key_stations);
-    if(!tmp || !Array.isArray(tmp)) {
+    if (!tmp || !Array.isArray(tmp)) {
         setStorage(key_stations, []);
     } else {
-        webamp.setTracksToPlay(getStorage(key_stations).map(e=>{return {url: e}}));
+        webamp.setTracksToPlay(getStorage(key_stations));
+    }
+}
+function deleteCurStation() {
+    const element = document.querySelector('.track-cell.current');
+    let spanContent = element.querySelector('span').textContent;
+
+    spanContent = spanContent.replace(/\d+\.\s*/, '');
+
+    const newStations = getStorage(key_stations).filter(e => e.metaData.title.replaceAll(/\s+/g, '') !== spanContent.replaceAll(/\s+/g, ''));
+
+    if(window.confirm("delete " + spanContent + " ?")) {
+        setStorage(key_stations, newStations);
+        loadStations();
     }
 }
 window.setSkin = (url) => { loadingWrapper(() => _setSkin(url)) }
