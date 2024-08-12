@@ -42,7 +42,7 @@ async function loadingWrapper(func) {
         await func();
     } catch {
         window.alert('I faild you');
-        loadingWrapper(func);
+        // loadingWrapper(func);
     }
     elm.style.display = "none";
 }
