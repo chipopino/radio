@@ -10,7 +10,7 @@
         z-index: 999999999999999999;
     }
 
-    span, h1, h2, p, button, label, select {
+    h1, h2, p, button, label, select {
         font-size: 2rem;
     }
 }
