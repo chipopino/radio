@@ -106,47 +106,53 @@
             animation: sf-fly-by-3 5s linear infinite;
         }
     </style>
+    <link rel="stylesheet" href="webamp.css">
 </head>
 
 <body>
 
-    <div class="bg"></div>
+    <!-- <div class="bg"></div>
     <div class="star-field">
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
+    </div> -->
+
+    <div id="poop">
+        <button onclick="search()">Search</button>
+        <button onclick="rndSkin()">random skin</button>
+        <button onclick="saveSkin()">save skin</button>
+        <button onclick="saveStation()">save station</button>
+        <button onclick="loadStations()">load saved stations</button>
+        <button onclick="deleteCurStation()">delete station</button>
+
+        <br />
+        <label for="defaultSkin">default skin</label>
+        <select id="defaultSkin" onchange="handleSkinDefault()">
+            <option value="random">random</option>
+            <option value="default">default</option>
+        </select>
+        <br />
+        <label for="savedSkin">saved skins</label>
+        <select id="savedSkin" onchange="handleSkinSelect()"></select>
+        <br />
+        <label for="deleteSkin">delete skin</label>
+        <select id="deleteSkin" onchange="handleSkinDelete()"></select>
+        <button onclick="deleteSkinBtn()">delete</button>
+
+        <div id='loading' style="display: none;">
+            <img style="position: fixed; bottom: 0px; left: 0px" src="loading.gif" alt="loading">
+        </div>
     </div>
 
-    <button onclick="search()">Search</button>
-    <button onclick="rndSkin()">random skin</button>
-    <button onclick="saveSkin()">save skin</button>
-    <button onclick="saveStation()">save station</button>
-    <button onclick="loadStations()">load saved stations</button>
-    <button onclick="deleteCurStation()">delete station</button>
-
-    <br />
-    <label for="defaultSkin">default skin</label>
-    <select id="defaultSkin" onchange="handleSkinDefault()">
-        <option value="random">random</option>
-        <option value="default">default</option>
-    </select>
-    <br />
-    <label for="savedSkin">saved skins</label>
-    <select id="savedSkin" onchange="handleSkinSelect()"></select>
-    <br />
-    <label for="deleteSkin">delete skin</label>
-    <select id="deleteSkin" onchange="handleSkinDelete()"></select>
-    <button onclick="deleteSkinBtn()">delete</button>
-    
-    <div id='loading' style="display: none;">
-        <img style="position: fixed; bottom: 0px; left: 0px" src="loading.gif" alt="loading">
-    </div>
 
     <div id="app" style="position: fixed; width:100vw; height:100vh;"></div>
     <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
     <script src="localStorage.js"></script>
     <script src="index.js"></script>
     <script src="webamp.js"></script>
+
+    <div style="background-color:blue;width:275px;height:50px"></div>
 </body>
 
 </html>

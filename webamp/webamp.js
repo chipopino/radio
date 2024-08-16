@@ -120,7 +120,7 @@ function deleteCurStation() {
 
     const newStations = getStorage(key_stations).filter(e => e.metaData.title.replaceAll(/\s+/g, '') !== spanContent.replaceAll(/\s+/g, ''));
 
-    if(window.confirm("delete " + spanContent + " ?")) {
+    if (window.confirm("delete " + spanContent + " ?")) {
         setStorage(key_stations, newStations);
         loadStations();
     }
@@ -138,6 +138,14 @@ webamp.renderWhenReady(document.getElementById("app"));
 window.addEventListener('load', () => {
     loadStations();
     const defaultSkin = window.getDefaultSkinUrl();
+
+    if (window.innerWidth < window.innerHeight) {
+        const webamp = document.getElementById('webamp');
+        const mainWindow = document.getElementById('main-window');
+        const ratio = window.innerWidth / mainWindow.offsetWidth;
+        webamp.style.transform = `scale(${ratio})`;
+    }
+
     if (defaultSkin) setSkin(defaultSkin.url)
     else if (window.defaultSkin.value === 'random') rndSkin()
     else return;

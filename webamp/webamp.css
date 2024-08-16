@@ -1,0 +1,16 @@
+@media (max-aspect-ratio: 1/1) {
+    #app {
+        transform: scale(500);
+    }
+
+    #poop {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        z-index: 999999999999999999;
+    }
+
+    span, h1, h2, p, button, label, select {
+        font-size: 4rem;
+    }
+}
