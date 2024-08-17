@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "root/*": [
+        "/*"
+      ],
+      "src/*": [
+        "src/*"
+      ],
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  }
+}
